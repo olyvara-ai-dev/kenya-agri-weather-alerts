@@ -36,14 +36,15 @@ npm start
 
 ## Deploy
 
-This Next.js app can be deployed to Vercel using the repository import flow and the default Next.js settings:
+Netlify supports this app's Next.js App Router, server rendering, route handlers, and middleware with its automatic Next.js adapter. No `netlify.toml` or extra adapter dependency is required.
 
-1. Import the Git repository into Vercel.
-2. Set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `NEXT_PUBLIC_SITE_URL` for each deployment environment. Set `NEXT_PUBLIC_SITE_URL` to the Vercel deployment URL. Add `WEATHER_API_KEY` as a server-side variable if using WeatherAPI. Never put secrets in source control or `NEXT_PUBLIC_*` variables.
-3. In Supabase Auth URL Configuration, set the production Site URL to the Vercel deployment URL and add `<production-site-url>/auth/callback` to the redirect URL allow list.
-4. Deploy and verify registration, email verification, sign-in/sign-out, farm-profile persistence, `/assistant`, and `/api/weather?lat=-0.8&lon=37.3`.
+1. In Netlify, choose **Add new site → Import an existing project** and select `olyvara-ai-dev/kenya-agri-weather-alerts` from GitHub. Keep the detected Next.js build settings.
+2. Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` to the Netlify environment variables. Add `WEATHER_API_KEY` as a server-side variable if using WeatherAPI.
+3. After the first deploy, set `NEXT_PUBLIC_SITE_URL` to the assigned Netlify site URL and redeploy. Never put secrets in source control or `NEXT_PUBLIC_*` variables.
+4. In Supabase Auth URL Configuration, set the Site URL to the Netlify site URL and add `<netlify-site-url>/auth/callback` to the redirect URL allow list.
+5. Verify registration, email verification, sign-in/sign-out, farm-profile persistence, `/assistant`, and `/api/weather?lat=-0.8&lon=37.3`.
 
-The app also works without the WeatherAPI key through its Open-Meteo fallback.
+See the [Netlify Next.js deployment guide](https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/). The app also works without the WeatherAPI key through its Open-Meteo fallback.
 
 ## Access and data
 
